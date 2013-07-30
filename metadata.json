@@ -1,0 +1,25 @@
+{
+  "description": "Puppet module to install ZEND Guard Loader for PHP 5.3 (apache)",
+  "summary": "UNKNOWN",
+  "source": "UNKNOWN",
+  "version": "1.0.0",
+  "author": "Proud Sourcing GmbH",
+  "dependencies": [
+
+  ],
+  "types": [
+
+  ],
+  "project_page": "UNKNOWN",
+  "license": "Apache License, Version 2.0",
+  "checksums": {
+    "manifests/params.pp": "f91b6705753f462852e4e69113d800f8",
+    "templates/ps_zendguard.ini": "c2d437a88ad0601d34d530c5d54f7e9f",
+    "files/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so": "abde7aab4ddfc99755b548e865071253",
+    "README.md": "9adaee03636789e6608a83b37846113d",
+    "templates/ps_zendguard.ini.erb": "edd03443510e1a6ebe5c6c57791864c5",
+    "Modulefile": "671b5f7f9920418dd2ec1b346e4bb6be",
+    "manifests/init.pp": "d46442dcca0d8b69a67390016d729a00"
+  },
+  "name": "proudsourcing-zendguard"
+}
