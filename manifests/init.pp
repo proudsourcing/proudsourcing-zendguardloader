@@ -1,9 +1,9 @@
-class ps_zendguard (
+class ps_zendguardloader (
 
-	$apache_modules_dir	= $ps_zendguard::params::apache_modules_dir,
-	$apache_php_dir		= $ps_zendguard::params::apache_php_dir,
+	$apache_modules_dir	= $ps_zendguardloader::params::apache_modules_dir,
+	$apache_php_dir		= $ps_zendguardloader::params::apache_php_dir,
 
-) inherits ps_zendguard::params {
+) inherits ps_zendguardloader::params {
 
 	file { "${apache_modules_dir}":
 		ensure => 'directory',
@@ -13,20 +13,20 @@ class ps_zendguard (
 	
 	file { "${apache_modules_dir}ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so":
 		ensure => present,
-	    source => "puppet:///modules/ps_zendguard/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so",
+	    source => "puppet:///modules/ps_zendguardloader/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so",
 	    subscribe => File["${apache_modules_dir}"]
 	}
 	
-	file { "${apache_php_dir}conf.d/ps_zendguard.ini":
+	file { "${apache_php_dir}conf.d/ps_zendguardloader.ini":
 		ensure => present,
-	    content => template("ps_zendguard/ps_zendguard.ini.erb"),
+	    content => template("ps_zendguardloader/ps_zendguardloader.ini.erb"),
 	    subscribe => File["${apache_modules_dir}ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so"]
 	}
 	
-	exec { "apache_restart":
+	exec { "apache_restart-zgl":
     	command => "/etc/init.d/apache2 reload",
 		refreshonly => true,
-    	subscribe => File["${apache_php_dir}conf.d/ps_zendguard.ini"],
+    	subscribe => File["${apache_php_dir}conf.d/ps_zendguardloader.ini"],
 	}
 
 }
