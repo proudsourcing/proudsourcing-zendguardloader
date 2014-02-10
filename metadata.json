@@ -1,8 +1,8 @@
 {
-  "description": "Puppet module to install ZEND Guard Loader for PHP 5.3 (apache-linux-x64).",
+  "description": "Puppet module to install ZEND Guard Loader for PHP 5.3 and PHP 5.4 (apache-linux-x64).",
   "summary": "UNKNOWN",
   "source": "UNKNOWN",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Proud Sourcing GmbH",
   "dependencies": [
 
@@ -13,12 +13,13 @@
   "project_page": "UNKNOWN",
   "license": "Apache License, Version 2.0",
   "checksums": {
-    "manifests/params.pp": "dbf84a5bcad373c558ff07b6e44e7d54",
-    "files/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so": "abde7aab4ddfc99755b548e865071253",
-    "templates/ps_zendguardloader.ini.erb": "1dedf7184aa87b2443f6820cdcce7556",
-    "README.md": "1558520dc6eeafc904ddb57dbfebe490",
-    "Modulefile": "cc05ebe3294d1dc5e8c473ad738f52e9",
-    "manifests/init.pp": "553221db9fc5dd8baa47a12627b6ab51"
+    "Modulefile": "bced3215ffee905a7d01624e6e218c1e",
+    "README.md": "3669e7320ead2e0bb35154ba285a2b8f",
+    "files/ZendGuardLoader-php53-linux-glibc23-x86_64.so": "abde7aab4ddfc99755b548e865071253",
+    "files/ZendGuardLoader-php54-linux-glibc23-x86_64.so": "ae0ee1d442ea2c5977d569b01c40c3f1",
+    "manifests/init.pp": "b0f4d88eea67941db4fd6df290067489",
+    "manifests/params.pp": "d1ea6f5f356cf0ea2bb54219c51b9512",
+    "templates/ps_zendguardloader.ini.erb": "351183e9e86d7a287e5657b785148fb2"
   },
   "name": "proudsourcing-zendguardloader"
 }

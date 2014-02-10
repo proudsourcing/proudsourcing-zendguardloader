@@ -2,6 +2,7 @@ class ps_zendguardloader (
 
 	$apache_modules_dir	= $ps_zendguardloader::params::apache_modules_dir,
 	$apache_php_dir		= $ps_zendguardloader::params::apache_php_dir,
+	$php_version		= $ps_zendguardloader::params::php_version,
 
 ) inherits ps_zendguardloader::params {
 
@@ -11,16 +12,33 @@ class ps_zendguardloader (
 		owner => 'root',
 	}
 	
-	file { "${apache_modules_dir}ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so":
-		ensure => present,
-	    source => "puppet:///modules/ps_zendguardloader/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so",
-	    subscribe => File["${apache_modules_dir}"]
-	}
+	if $php_version == "php54"
+	{
+		file { "${apache_modules_dir}ZendGuardLoader-php-5.4-linux-glibc23-x86_64.so":
+			ensure => present,
+	    	source => "puppet:///modules/ps_zendguardloader/ZendGuardLoader-php-5.4-linux-glibc23-x86_64.so",
+	    	subscribe => File["${apache_modules_dir}"]
+		}
 	
-	file { "${apache_php_dir}conf.d/ps_zendguardloader.ini":
-		ensure => present,
-	    content => template("ps_zendguardloader/ps_zendguardloader.ini.erb"),
-	    subscribe => File["${apache_modules_dir}ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so"]
+		file { "${apache_php_dir}conf.d/ps_zendguardloader.ini":
+			ensure => present,
+	    	content => template("ps_zendguardloader/ps_zendguardloader.ini.erb"),
+	    	subscribe => File["${apache_modules_dir}ZendGuardLoader-php-5.4-linux-glibc23-x86_64.so"]
+		}
+	}
+	else
+	{
+		file { "${apache_modules_dir}ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so":
+			ensure => present,
+	    	source => "puppet:///modules/ps_zendguardloader/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so",
+	    	subscribe => File["${apache_modules_dir}"]
+		}
+	
+		file { "${apache_php_dir}conf.d/ps_zendguardloader.ini":
+			ensure => present,
+	    	content => template("ps_zendguardloader/ps_zendguardloader.ini.erb"),
+	    	subscribe => File["${apache_modules_dir}ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so"]
+		}
 	}
 	
 	exec { "apache_restart-zgl":

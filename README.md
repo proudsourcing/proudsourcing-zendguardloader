@@ -1,18 +1,19 @@
 # proudsourcing-zendguardloader
 
-Puppet module to install ZEND Guard Loader for PHP 5.3 (apache-linux-x64).
+Puppet module to install ZEND Guard Loader for PHP 5.3 and PHP 5.4 (apache-linux-x64).
 
 
 ## Usage
 
-	class { 'ps_zendguardloader':	}
+	class { 'ps_zendguardloader': }
 
 
 ## Configuration
 
-You can define apache modules and php conf.d directory:
+You can define php version, apache modules and php conf.d directory:
 
 	class { 'ps_zendguardloader':
+		php_version			=> "php54",
 		apache_modules_dir	=> "",
 		apache_php_dir		=> ""
 	}
@@ -22,7 +23,7 @@ Default values:
 
     $apache_modules_dir		= '/etc/apache2/modules/'
     $apache_php_dir			= '/etc/php5/apache2/'
-
+    $php_version			= 'php53'
 
 
 ## License
@@ -43,5 +44,5 @@ Default values:
 
 ## Copyright
 
-	Proud Sourcing GmbH 2013
+	Proud Sourcing GmbH 2014
 	www.proudsourcing.de / www.proudcommerce.com
