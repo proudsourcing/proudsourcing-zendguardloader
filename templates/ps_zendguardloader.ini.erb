@@ -1,4 +1,7 @@
 ;configuration for zend guard loader
 zend_optimizer.enable_loader = On
 zend_optimizer.optimization_level = 15
-zend_extension = "<%= @apache_modules_dir %>ZendGuardLoader-php-5.3-linux-glibc23-x86_64.so"
+zend_extension = "<%= @apache_modules_dir %>ZendGuardLoader-php-<%= @php_version %>-linux-glibc23-x86_64.so"
+<% if @php_version == "5.5" or @php_version == "5.6" -%>
+zend_extension = "<%= @apache_modules_dir %>opCache-php-<%= @php_version %>-linux-glibc23-x86_64.so"
+<% end -%>
